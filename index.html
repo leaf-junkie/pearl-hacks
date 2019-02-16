@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">    
+        <title>Campus Watch</title>
+        <!-- Links -->
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    </head>
+    <body>
+        <header>
+            <section class="hero is-dark">
+                <div class="hero-body">
+                    <div class="container">
+                    <h1 class="title">
+                        Campus Watch
+                    </h1>
+                    <h2 class="subtitle">
+                        Hate crime and microaggression awareness
+                    </h2>
+                    </div>
+                </div>
+            </section>
+        </header>
+        <div class="section container">
+            <div class="columns">
+                <div id="resources" class="column is-one-third has-text-centered">
+                    <section class="section">
+                        <button class="button is-warning is-size-3">Post an Incident</button>
+                        <br>
+                        <section>
+                            <p class="is-size-3">Resources</p>
+                            <ul class="is-size-4">
+                                <li><a>Campus Police</a></li>
+                                <li>919-962-8100</li>
+                                <li><a>Counseling and Psychological Services</a></li>
+                                <li>919-966-3658</li>
+                                <li><a>UNC-CH LBGTQ Center</a></li>
+                                <li>919-843-5376</li>
+                                <li><a>UNC Health Care</a></li>
+                                <li>984-974-1000</li>
+                                <li><a>North Carolina Women's Hospital</a></li>
+                                <li>919-966-4131</li>
+                            </ul>
+                            <div id="modal_resources" class="modal">
+                                <div class="modal-background"></div>
+                                <div class="modal-content">
+                                    <!-- Any other Bulma elements you want -->
+                                </div>
+                                <button class="modal-close is-large" aria-label="close"></button>
+                            </div>
+                        </section>
+                    </section>
+                </div>
+
+                <div id="map" class="column is-two-thirds has-text-centered container">
+                    <div>
+                        <img src="assets/images/mapplaceholder.PNG">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section>
+            <div class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                    <p class="modal-card-title">Modal title</p>
+                    <button class="delete" aria-label="close"></button>
+                    </header>
+                    <section class="modal-card-body">
+                    <!-- Content ... -->
+                    </section>
+                    <footer class="modal-card-foot">
+                    <button class="button is-success">Submit</button>
+                    <button class="button">Cancel</button>
+                    </footer>
+                </div>
+            </div>
+        </section>
+        <footer class="has-text-centered">
+            2019
+        </footer>
+    </body>
+</html>
