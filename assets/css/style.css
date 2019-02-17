@@ -1,5 +1,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background: #fff7f8;
+    color: #333;
 }
 
 #loading-screen {
@@ -27,12 +29,18 @@ body {
     width: 100%;  
 }
 
+.modal-card-body {
+    height: 600px;
+}
+
 footer {
     position: fixed;
     width: 100%;
     left: 0;
     right: 0;
     bottom: 0;
+    background: #fff7f8;
+    color: #333;
 }
 
 /* MEDIA QUERIES */

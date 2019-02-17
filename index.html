@@ -11,9 +11,10 @@
     </head>
     <body>
         <!-- LOADING SCREEN -->
-        <div id="loading-screen">
+        <div id="loading-screen" style="display: flex">
             <div id="loading">
                 <p>You are heard.</p>
+                <p>Trigger Warning: Content may be upsetting.</p>
             </div>
             <div id="isItLoaded"></div>
         </div>
@@ -31,7 +32,7 @@
                             </p>
                         </div>
                         <div>
-                            <button id="button_post" class="button is-warning is-size-3">Post an Incident</button>
+                            <button id="postButton" class="button is-warning is-size-3" onClick=displayModal()>Post an Incident</button>
                         </div>
                     </div>
                 </div>
@@ -57,14 +58,6 @@
                                 <li class="resource"><a>North Carolina Women's Hospital</a></li>
                                 <li>919-966-4131</li>
                             </ul>
-                            <!-- MODAL -->
-                            <div id="modal_resources" class="modal">
-                                <div class="modal-background"></div>
-                                <div class="modal-content">
-                                    <!-- Any other Bulma elements you want -->
-                                </div>
-                                <button class="modal-close is-large" aria-label="close"></button>
-                            </div>
                         </section>
                     </section>
                 </div>
@@ -74,18 +67,18 @@
                         <div class="dropdown">
                             <div class="dropdown-trigger">
                                 <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                                <span>Filter</span>
-                                <span class="icon is-small">
-                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                </span>
+                                    <span>Filter</span>
+                                    <span class="icon is-small">
+                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    </span>
                                 </button>
                             </div>
                             <div class="dropdown-menu" id="dropdown-menu3" role="menu">
                                 <div class="dropdown-content">
-                                <a href="#" class="dropdown-item">
-                                    Physical
-                                </a>
-                                <a href="#" class="dropdown-item">
+                                    <a href="#" class="dropdown-item">
+                                        Physical
+                                    </a>
+                                    <a href="#" class="dropdown-item">
                                     Sexual
                                 </a>
                                 <a href="#" class="dropdown-item">
@@ -98,22 +91,22 @@
                                 <a href="#" class="dropdown-item">
                                     Other
                                 </a>
-                                </div>
                             </div>
+                        </div>
                         </div>    
                         <div id="map"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Modal -->
-        <section style="visibility:visible">
-            <div id="modal_incident" class="modal">
+        <!-- MODAL -->
+        <section>
+            <div id="modal_incident" class="modal" style="visibility: hidden">
                 <div class="modal-background"></div>
                 <div class="modal-card">
                     <header class="modal-card-head">
                         <p class="modal-card-title">Please tell us what happened.</p>
-                        <button class="delete" aria-label="close"></button>
+                        <button class="closeModal delete" aria-label="close"></button>
                     </header>
                     <section class="modal-card-body">
                         <!-- Dropdown Menu ... -->
@@ -147,10 +140,14 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- User input: Description of incident (textarea) -->
+                        <div></div>
+                        <!-- User input: Geolocation (button) -->
+                        <div></div>
                     </section>
                     <footer class="modal-card-foot">
-                        <button class="button is-success">Submit</button>
-                        <button class="button">Cancel</button>
+                        <button class="closeModal button is-success">Submit</button>
+                        <button class="closeModal button">Cancel</button>
                     </footer>
                 </div>
             </div>

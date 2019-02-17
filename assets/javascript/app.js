@@ -1,11 +1,24 @@
-$(document).ready(function () {
-// // Loading Screen
-// var loadingScreen = document.getElementById('loading-screen'); 
 
-// // Modal
-// var modal = document.getElementById('modal_incident');
+// Loading Screen
+var loadingScreen = document.getElementById('loading-screen'); 
 
-// // Dropdown
+
+// Click "Post an Incident" button to pull up modal
+function displayModal() {
+    var openModal = document.getElementById('modal_incident');
+    openModal.style = "display: flex;";
+}
+
+// Click "cancel" or "x" buttons to close modal
+// function hideModal() {
+//     var closeModal = document.getElementsByClassName('closeModal');
+//     closeModal.classList.toggle('');
+// }
+
+// Click "Submit" button to submit user data to Firebase
+// ...
+
+// Dropdown
 // var dropdown = document.getElementsByClassName('dropdown');
 var dropdown = document.querySelector('.dropdown');
 dropdown.addEventListener('click', function(event) {
@@ -13,17 +26,16 @@ dropdown.addEventListener('click', function(event) {
   dropdown.classList.toggle('is-active');
 });
 
- // Initialize Firebase
- var config = {
+// Initialize Firebase
+var config = {
     apiKey: "AIzaSyBZaI57r0sx090hujmUnV0OH8iCjLcDRt8",
     authDomain: "pearlhacks2019.firebaseapp.com",
     databaseURL: "https://pearlhacks2019.firebaseio.com",
     projectId: "pearlhacks2019",
     storageBucket: "pearlhacks2019.appspot.com",
     messagingSenderId: "73378828200"
-  };
-  firebase.initializeApp(config);
-
+};
+  
 // Map API stuff
 var map
 
@@ -48,23 +60,24 @@ function initMap() {
     // The map, centered at UNC
     map = new google.maps.Map(
         document.getElementById('map'), {zoom: 14, center: UNC});
-
-    
-    markers.forEach(marker => new google.maps.Marker({position: marker.position, 
+        
+        
+        markers.forEach(marker => new google.maps.Marker({position: marker.position, 
         map: map, icon: marker.icon}));
-  }
+    }
+    
+function addMarker(lat, lng, color) {
+        
+        var position = {lat: lat, lng: lng}
+        
+        new google.maps.Marker({position: position, map: map, icon: 'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png'});
+        
+    }   
 
-function addMarker(lat, lng, color){
-
-    var position = {lat: lat, lng: lng}
-
-    new google.maps.Marker({position: position, map: map, icon: 'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png'});
-
-}
+$(document).ready(function () {
+    firebase.initializeApp(config);
 
     initMap()
-    
     addMarker(35.907294, -79.030031, "purple")
     addMarker(35.907294, -79.070331, "orange")
-
-})
+});
