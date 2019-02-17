@@ -1,18 +1,3 @@
-// Click "Post an Incident" button to pull up modal
-function displayModal() {
-    var openModal = document.getElementById('modal_incident');
-    openModal.style = "display: flex;";
-}
-
-// Click "cancel" or "x" buttons to close modal
-// function hideModal() {
-//     var closeModal = document.getElementsByClassName('closeModal');
-//     closeModal.classList.toggle('');
-// }
-
-// Click "Submit" button to submit user data to Firebase
-// ...
-
 // Filter dropdown menu for map
 // var dropdown = document.querySelector('.dropdown');
 // dropdown.addEventListener('click', function(event) {
@@ -174,7 +159,6 @@ orange.onclick = function(){
     newMap = true;
     initMap();
 }
-
 yellow = document.getElementById("yellow");
 yellow.clicked = "false";
 yellow.onclick = function(){
@@ -187,7 +171,6 @@ yellow.onclick = function(){
     newMap = true;
     initMap();
 }
-
 purple = document.getElementById("purple");
 purple.clicked = "false";
 purple.onclick = function(){
@@ -219,13 +202,33 @@ function pushFirebase() {
       });
 }
 
-submit = document.getElementById("submit");
-submit.onclick = function () {
-    pushFirebase();
-    console.log(color)
-    document.getElementById("modal_incident").style.visibility = "hidden";
-    markers.push(addMarker(position._lat,position._long, color));
+// Click "Post an Incident" button to pull up modal
+function displayModal() {
+    var openModal = document.getElementById("modal_incident");
+    openModal.style = "display: flex;";
 }
+function closeModal() {
+    var cancel = document.getElementById("cancel");
+    var exit = document.getElementsById("exit");
+    var submit = document.getElementById("submit");
+    submit.onclick = function () {
+        pushFirebase();
+        console.log(color)
+        document.getElementById("modal_incident").style.visibility = "hidden";
+        markers.push(addMarker(position._lat,position._long, color));
+        
+        function clearContents(element) {
+            element.value = "";
+        }
+        clearContents();
+    }
+}
+
+// Click "cancel" or "x" buttons to close modal
+// function hideModal() {
+//     var closeModal = document.getElementsByClassName('closeModal');
+//     closeModal.classList.toggle('');
+// }
 
 $(document).ready(function () {
     firebase.initializeApp(config);

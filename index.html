@@ -74,11 +74,11 @@
                     <div id="list1" class="dropdown-check-list" tabindex="100">
                         <span class="anchor is-size-5">Filter...</span>
                         <ul class="items is-size-5">
-                            <li><input type="checkbox" />Physical</li>
-                            <li><input type="checkbox" />Sexual</li>
-                            <li><input type="checkbox" />Verbal</li>
-                            <li><input type="checkbox" />Vandalism</li>
-                            <li><input type="checkbox" />Other</li>
+                            <li><input type="checkbox" id="orange"/>Physical</li>
+                            <li><input type="checkbox" id="blue"/>Sexual</li>
+                            <li><input type="checkbox" id="pink"/>Verbal</li>
+                            <li><input type="checkbox" id="yellow"/>Vandalism</li>
+                            <li><input type="checkbox" id="purple"/>Other</li>
                         </ul>
                     </div>
                     <script type="text/javascript">
@@ -109,7 +109,7 @@
                 <div class="modal-card">
                     <header class="modal-card-head">
                         <p class="modal-card-title">Please tell us what happened.</p>
-                        <button class="closeModal delete" aria-label="close"></button>
+                        <button class="closeModal delete" id="exit" aria-label="close"></button>
                     </header>
                     <section class="modal-card-body">
                         <!-- Dropdown Menu ... -->
@@ -175,7 +175,7 @@
                     </section>
                     <footer class="modal-card-foot">
                         <button class="closeModal button is-success" id="submit">Submit</button>
-                        <button class="closeModal button">Cancel</button>
+                        <button class="closeModal button" id="cancel">Cancel</button>
                     </footer>
                 </div>
             </div>
