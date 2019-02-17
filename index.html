@@ -6,23 +6,25 @@
         <title>Campus Watch</title>
         <!-- CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen (max-width: 768px)">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen (max-width: 800px)">
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <!-- Firebase -->
         <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script>
         <!-- Bulma Fonts -->
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     </head>
     <body>
         <!-- LOADING SCREEN -->
-        <div id="loading-screen" style="display: flex">
-            <div id="loading">
-                <p>You are heard.</p>
-                <p>Trigger Warning: Content may be upsetting.</p>
+        <div id="loading">
+            <div class="has-text-centered">
+                <p id="youAreHeard" class="is-size-1">You are heard.</p>
+                <p id="triggerWarning" class="is-size-5"><strong>Trigger Warning: </strong>This site displays instances of hate crimes and microaggressions</p>
             </div>
-            <div id="isItLoaded"></div>
         </div>
         <!-- HERO/HEADER -->
         <header>
@@ -69,27 +71,32 @@
                 </div>
                 <!-- MAP -->
                 <div class="column is-two-thirds has-text-centered container">
-                    <div>
-                        <div class="dropdown">
-                            <div class="dropdown-trigger">
-                                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                                    <span>Filter</span>
-                                    <span class="icon is-small">
-                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                    </span>
-                                </button>
-                            </div>
-                            <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                                <div class="dropdown-content">
-                                    <a href="#" class="dropdown-item">Physical</a>
-                                    <a href="#" class="dropdown-item">Sexual</a>
-                                    <a href="#" class="dropdown-item">Verbal</a>
-                                    <a href="#" class="dropdown-item">Vandalism</a>
-                                    <hr class="dropdown-divider">
-                                    <a href="#" class="dropdown-item">Other</a>
-                            </div>
-                        </div>
-                        </div>    
+                    <div id="list1" class="dropdown-check-list" tabindex="100">
+                        <span class="anchor is-size-5">Filter...</span>
+                        <ul class="items is-size-5">
+                            <li><input type="checkbox" />Physical</li>
+                            <li><input type="checkbox" />Sexual</li>
+                            <li><input type="checkbox" />Verbal</li>
+                            <li><input type="checkbox" />Vandalism</li>
+                            <li><input type="checkbox" />Other</li>
+                        </ul>
+                    </div>
+                    <script type="text/javascript">
+                        // JS for dropdown with checkbox
+                        // TODO: Allow user to check boxes without options disappearing
+                        var checkList = document.getElementById('list1');
+                        checkList.getElementsByClassName('anchor')[0].onclick = function (evt) {
+                            if (checkList.classList.contains('visible'))
+                                checkList.classList.remove('visible');
+                            else
+                                checkList.classList.add('visible');
+                        }
+                
+                        checkList.onblur = function(evt) {
+                            checkList.classList.remove('visible');
+                        }
+                    </script>
+                
                         <div id="map"></div>
                     </div>
                 </div>
@@ -106,7 +113,23 @@
                     </header>
                     <section class="modal-card-body">
                         <!-- Dropdown Menu ... -->
-                        <div class="dropdown">
+                        <select id="sel" onchange="setType()">
+                            <option value=""disabled selected>Select...</option>
+                            <option value="blue" id="blue">Sexual Assault</option>
+                            <option value="orange" id="orange">Physical Assault</option>
+                            <option value="pink" id="pink">Verbal Harassment</option>
+                            <option value="yellow" id="yellow">Vandalism</option>
+                            <option value="purple" id="purple">Other</option>
+                        </select>
+                        <script>
+                            var sel;
+                            function setType(){
+                                sel = document.getElementById('sel').value;
+                            }   
+                        </script>
+                        <hr>
+                        <!-- Dropdown Menu ... -->
+                        <!-- <div class="dropdown">
                             <div class="dropdown-trigger">
                                 <button class="button is-size-5" aria-haspopup="true" aria-controls="dropdown-menu">
                                 <span>Select...</span>
@@ -136,30 +159,30 @@
                                 </div>
                             </div>
                         </div>
-                        <hr>
+                        <hr> -->
                         <!-- User input: Description of incident (textarea) -->
                         <div class="field">
                             <div class="control">
-                                <textarea class="textarea is-warning is-size-5" placeholder="Warning textarea"></textarea>
+                                <textarea id="textbox" class="textarea is-warning is-size-5" placeholder="Warning text area"></textarea>
                             </div>
                         </div>
                         <hr>
                         <!-- User input: Geolocation (button) -->
-                        <div>
+                        <!-- <div>
                             <p></p>
                             <button class="button is-size-5">Geolocation</button>
-                        </div>
+                        </div> -->
                     </section>
                     <footer class="modal-card-foot">
-                        <button class="closeModal button is-success">Submit</button>
+                        <button class="closeModal button is-success" id="submit">Submit</button>
                         <button class="closeModal button">Cancel</button>
                     </footer>
                 </div>
             </div>
         </section>
-        <footer class="has-text-centered">
+        <!-- <footer class="has-text-centered">
             2019
-        </footer>
+        </footer> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwOPOkzG6FSCOn9G8Y9JaS667X_RytrW4"></script>
         <script src="assets/javascript/app.js"></script>
