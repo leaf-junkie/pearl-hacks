@@ -207,28 +207,41 @@ function displayModal() {
     var openModal = document.getElementById("modal_incident");
     openModal.style = "display: flex;";
 }
+
 function closeModal() {
     var cancel = document.getElementById("cancel");
-    var exit = document.getElementsById("exit");
+    var exit = document.getElementById("exit");
     var submit = document.getElementById("submit");
+    // Click "cancel" or "x" buttons to close modal
+    cancel.onclick = function () {
+        document.getElementById("modal_incident").style.visibility = "hidden";
+        clearContents();
+    }
+    exit.onclick = function () {
+        document.getElementById("modal_incident").style.visibility = "hidden";
+        clearContents();
+    }
+    // Click "Submit" to send user input to Firebase
     submit.onclick = function () {
         pushFirebase();
         console.log(color)
         document.getElementById("modal_incident").style.visibility = "hidden";
         markers.push(addMarker(position._lat,position._long, color));
-        
-        function clearContents(element) {
-            element.value = "";
-        }
         clearContents();
     }
 }
+closeModal();
 
-// Click "cancel" or "x" buttons to close modal
-// function hideModal() {
-//     var closeModal = document.getElementsByClassName('closeModal');
-//     closeModal.classList.toggle('');
-// }
+function clearContents() {
+    // TODO: Clear contents of modal
+    // Reset dropdown
+    
+    // Clear textarea
+    var textbox = document.getElementById("textbox");
+    if (textbox) {
+        textbox.value = "";
+    }
+}
 
 $(document).ready(function () {
     firebase.initializeApp(config);
