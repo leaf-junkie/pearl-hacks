@@ -7,9 +7,11 @@ $(document).ready(function () {
 
 // // Dropdown
 // var dropdown = document.getElementsByClassName('dropdown');
-// $('#dropdown').on('click') {
-    
-// }
+var dropdown = document.querySelector('.dropdown');
+dropdown.addEventListener('click', function(event) {
+  event.stopPropagation();
+  dropdown.classList.toggle('is-active');
+});
 
  // Initialize Firebase
  var config = {
