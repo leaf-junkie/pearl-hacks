@@ -12,7 +12,9 @@
     <body>
         <!-- LOADING SCREEN -->
         <div id="loading-screen">
-            <div id="loading"></div>
+            <div id="loading">
+                <p>You are heard.</p>
+            </div>
             <div id="isItLoaded"></div>
         </div>
         <!-- HERO/HEADER -->
@@ -69,25 +71,95 @@
                 <!-- MAP -->
                 <div class="column is-two-thirds has-text-centered container">
                     <div>
+                        <div class="dropdown">
+                            <div class="dropdown-trigger">
+                                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                                <span>Filter</span>
+                                <span class="icon is-small">
+                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                </span>
+                                </button>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                                <div class="dropdown-content">
+                                <a href="#" class="dropdown-item">
+                                    Overview
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    Modifiers
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    Grid
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    Form
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    Elements
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    Components
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    Layout
+                                </a>
+                                <hr class="dropdown-divider">
+                                <a href="#" class="dropdown-item">
+                                    More
+                                </a>
+                                </div>
+                            </div>
+                        </div>    
                         <div id="map"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <section>
-            <div class="modal">
+        <!-- Modal -->
+        <section style="visibility:visible">
+            <div id="modal_incident" class="modal">
                 <div class="modal-background"></div>
                 <div class="modal-card">
                     <header class="modal-card-head">
-                    <p class="modal-card-title">Modal title</p>
-                    <button class="delete" aria-label="close"></button>
+                        <p class="modal-card-title">Please tell us what happened.</p>
+                        <button class="delete" aria-label="close"></button>
                     </header>
                     <section class="modal-card-body">
-                    <!-- Content ... -->
+                        <!-- Dropdown Menu ... -->
+                        <div class="dropdown is-active">
+                            <div class="dropdown-trigger">
+                                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                <span>Select...</span>
+                                <span class="icon is-small">
+                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                </span>
+                                </button>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                                <div class="dropdown-content">
+                                    <a href="#" class="dropdown-item">
+                                        Physical
+                                    </a>
+                                    <a class="dropdown-item">
+                                        Sexual
+                                    </a>
+                                    <a href="#" class="dropdown-item is-active">
+                                        Verbal
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        Vandalism
+                                    </a>
+                                    <hr class="dropdown-divider">
+                                    <a href="#" class="dropdown-item">
+                                        Other
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </section>
                     <footer class="modal-card-foot">
-                    <button class="button is-success">Submit</button>
-                    <button class="button">Cancel</button>
+                        <button class="button is-success">Submit</button>
+                        <button class="button">Cancel</button>
                     </footer>
                 </div>
             </div>
@@ -104,5 +176,6 @@
         * The key parameter will contain your own API key (which is not needed for this tutorial)
         * The callback parameter executes the initMap() function
         -->
+        <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
     </body>
 </html>

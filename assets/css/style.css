@@ -3,7 +3,8 @@ body {
 }
 
 #loading-screen {
-    background: 
+    background: #fff7f8;
+    color: #333;
 }
 
 .hero-container { 

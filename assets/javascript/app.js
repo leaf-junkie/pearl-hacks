@@ -1,17 +1,42 @@
+$(document).ready(function () {
+// // Loading Screen
+// var loadingScreen = document.getElementById('loading-screen'); 
+
+// // Modal
+// var modal = document.getElementById('modal_incident');
+
+// // Dropdown
+// var dropdown = document.getElementsByClassName('dropdown');
+// $('#dropdown').on('click') {
+    
+// }
+
+ // Initialize Firebase
+ var config = {
+    apiKey: "AIzaSyBZaI57r0sx090hujmUnV0OH8iCjLcDRt8",
+    authDomain: "pearlhacks2019.firebaseapp.com",
+    databaseURL: "https://pearlhacks2019.firebaseio.com",
+    projectId: "pearlhacks2019",
+    storageBucket: "pearlhacks2019.appspot.com",
+    messagingSenderId: "73378828200"
+  };
+  firebase.initializeApp(config);
+
+// Map API stuff
 var map
 
 var markers = [
     {
         position: {lat: 35.908265, lng: -79.050531},
-        icon: "../assets/googleMapMarkers/blue_MarkerA.png"
+        icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
     },
     {
         position: {lat: 35.906392, lng: -79.051134},
-        icon: "../assets/googleMapMarkers/blue_MarkerB.png"
+        icon: 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
     },
     {
         position: {lat: 35.907294, lng: -79.049519},
-        icon: "../assets/googleMapMarkers/red_MarkerC.png"
+        icon: 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png'
     }
 ]
 
@@ -23,34 +48,21 @@ function initMap() {
         document.getElementById('map'), {zoom: 14, center: UNC});
 
     
-    markers.forEach(marker => new google.maps.Marker({position: marker.position, map: map, icon: marker.icon}));
+    markers.forEach(marker => new google.maps.Marker({position: marker.position, 
+        map: map, icon: marker.icon}));
   }
 
-function addMarker(lat, lng, color, letter){
+function addMarker(lat, lng, color){
 
     var position = {lat: lat, lng: lng}
 
-    var iconLetter
-    console.log(letter)
-    
-    if(letter === undefined){
-        iconLetter = "A"
-    }
-    else{
-        iconLetter = letter
-    }
-
-    var icon = "../assets/googleMapMarkers/" + color + "_Marker" + iconLetter + ".png"
-
-    new google.maps.Marker({position: position, map: map, icon: icon});
+    new google.maps.Marker({position: position, map: map, icon: 'http://maps.google.com/mapfiles/ms/icons/'+color+'-dot.png'});
 
 }
 
-$(document).ready(function () {
-
     initMap()
-
-    addMarker(35.907294, -79.030031, "purple", "F")
+    
+    addMarker(35.907294, -79.030031, "purple")
     addMarker(35.907294, -79.070331, "orange")
 
 })
