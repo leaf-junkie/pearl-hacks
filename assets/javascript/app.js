@@ -1,4 +1,3 @@
-// Filter dropdown menu for map
 // var dropdown = document.querySelector('.dropdown');
 // dropdown.addEventListener('click', function(event) {
 //   event.stopPropagation();
@@ -133,6 +132,7 @@ blue.onclick = function(){
         unfilter(blue.id);
     }
     newMap = true;
+    hideDropdown();
     initMap();
 }
 pink = document.getElementById("pink");
@@ -145,6 +145,7 @@ pink.onclick = function(){
         unfilter(pink.id);
     }
     newMap = true;
+    hideDropdown();
     initMap();
 }
 orange = document.getElementById("orange");
@@ -157,6 +158,7 @@ orange.onclick = function(){
         unfilter(orange.id);
     }
     newMap = true;
+    hideDropdown();
     initMap();
 }
 yellow = document.getElementById("yellow");
@@ -169,6 +171,7 @@ yellow.onclick = function(){
         unfilter(yellow.id);
     }
     newMap = true;
+    hideDropdown();
     initMap();
 }
 purple = document.getElementById("purple");
@@ -181,26 +184,68 @@ purple.onclick = function(){
             unfilter(purple.id);
         }
         newMap = true;
+        hideDropdown();
         initMap();
     }
+
+filterButton = document.getElementById("filter-button");
+filterButton.onclick = function() {
+    var dropdown = document.getElementById('dropdown-menu3');
+    if (dropdown.style.display === "flex"){
+        dropdown.style = "display: none;"
+    }
+    else {
+        dropdown.style = "display: flex;"
+    }
+}
+
+function hideDropdown() {
+    var dropdown = document.getElementById('dropdown-menu3');
+    dropdown.style = "display: none;"
+}
  
 var position, color;
 function pushFirebase() {
     var myFirebase = firebase.database().ref();
     var recommendations = myFirebase.child("recommendations");
-    recommendations.push({
+    infoWindow = new google.maps.InfoWindow;
+    
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          map.setCenter(pos);
+        });
+      } 
+
+   recommendations.push({
         "type": document.getElementById("sel").value,
-        "location": new firebase.firestore.GeoPoint(35.9, -79.05),
+        "location": new firebase.firestore.GeoPoint(pos.lat, pos.lng),
         "description": document.getElementById("textbox").value
     });
 
-    recommendations.limitToLast(1).on("child_added", function(childSnapshot) {
+    recommendations.limitToLast(1).on('child_added', function(childSnapshot) {
         recommendations = childSnapshot.val();
-        position = recommendations.location
-        color = recommendations.type
+        position=recommendations.location
+        color=recommendations.type
         $("text").html(recommendations.description)
+      
       });
 }
+
+var geo = document.getElementById("geo");
+geo.onclick=function(){
+    navigator.geolocation.getCurrentPosition(function(position) {
+        pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
+    });
+    var t= document.createTextNode(": Latitude: "+pos.lat+", Longitude: "+pos.lng)
+    geo.appendChild(t)
+    }
 
 // Click "Post an Incident" button to pull up modal
 function displayModal() {
@@ -233,9 +278,8 @@ function closeModal() {
 closeModal();
 
 function clearContents() {
-    // TODO: Clear contents of modal
-    // Reset dropdown
-    
+    // TODO: Reset dropdown
+
     // Clear textarea
     var textbox = document.getElementById("textbox");
     if (textbox) {

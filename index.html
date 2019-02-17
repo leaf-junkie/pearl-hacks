@@ -70,35 +70,28 @@
                     </section>
                 </div>
                 <!-- MAP -->
-                <div class="column is-two-thirds has-text-centered container">
-                    <div id="list1" class="dropdown-check-list" tabindex="100">
-                        <span class="anchor is-size-5">Filter...</span>
-                        <ul class="items is-size-5">
-                            <li><input type="checkbox" id="orange"/>Physical</li>
-                            <li><input type="checkbox" id="blue"/>Sexual</li>
-                            <li><input type="checkbox" id="pink"/>Verbal</li>
-                            <li><input type="checkbox" id="yellow"/>Vandalism</li>
-                            <li><input type="checkbox" id="purple"/>Other</li>
-                        </ul>
-                    </div>
-                    <script type="text/javascript">
-                        // JS for dropdown with checkbox
-                        // TODO: Allow user to check boxes without options disappearing
-                        var checkList = document.getElementById('list1');
-                        checkList.getElementsByClassName('anchor')[0].onclick = function (evt) {
-                            if (checkList.classList.contains('visible'))
-                                checkList.classList.remove('visible');
-                            else
-                                checkList.classList.add('visible');
-                        }
-                
-                        checkList.onblur = function(evt) {
-                            checkList.classList.remove('visible');
-                        }
-                    </script>
-                
-                        <div id="map"></div>
-                    </div>
+                <div id="map-div" class="column">
+                    <div class="dropdown">
+                        <div class="dropdown-trigger">
+                            <button class="button" id="filter-button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                                <span>Filter</span>
+                                <span class="icon is-small">
+                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                            <div class="dropdown-content">
+                                <a href="#" id="orange" class="dropdown-item">Physical</a>
+                                <a href="#" id="blue" class="dropdown-item">Sexual</a>
+                                <a href="#" id="pink" class="dropdown-item">Verbal</a>
+                                <a href="#" id="yellow" class="dropdown-item">Vandalism</a>
+                                <hr class="dropdown-divider">
+                                <a href="#" id="purple" class="dropdown-item">Other</a>
+                            </div>
+                        </div>
+                    </div>   
+                    <div id="map"></div>
                 </div>
             </div>
         </div>
@@ -128,38 +121,6 @@
                             }   
                         </script>
                         <hr>
-                        <!-- Dropdown Menu ... -->
-                        <!-- <div class="dropdown">
-                            <div class="dropdown-trigger">
-                                <button class="button is-size-5" aria-haspopup="true" aria-controls="dropdown-menu">
-                                <span>Select...</span>
-                                <span class="icon is-small">
-                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                </span>
-                                </button>
-                            </div>
-                            <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                                <div class="dropdown-content">
-                                    <a href="#" class="dropdown-item">
-                                        Physical
-                                    </a>
-                                    <a class="dropdown-item">
-                                        Sexual
-                                    </a>
-                                    <a href="#" class="dropdown-item is-active">
-                                        Verbal
-                                    </a>
-                                    <a href="#" class="dropdown-item">
-                                        Vandalism
-                                    </a>
-                                    <hr class="dropdown-divider">
-                                    <a href="#" class="dropdown-item">
-                                        Other
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <hr> -->
                         <!-- User input: Description of incident (textarea) -->
                         <div class="field">
                             <div class="control">
@@ -168,10 +129,10 @@
                         </div>
                         <hr>
                         <!-- User input: Geolocation (button) -->
-                        <!-- <div>
+                        <div>
                             <p></p>
-                            <button class="button is-size-5">Geolocation</button>
-                        </div> -->
+                            <button class="button is-size-5" id="geo">Geolocation</button>
+                        </div>
                     </section>
                     <footer class="modal-card-foot">
                         <button class="closeModal button is-success" id="submit">Submit</button>
