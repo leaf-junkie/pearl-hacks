@@ -5,6 +5,7 @@
         <meta name="viewport" content="width-device-width, initial-scale=1.0">    
         <title>Campus Watch</title>
         <!-- Links -->
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -75,22 +76,12 @@
                             </div>
                             <div class="dropdown-menu" id="dropdown-menu3" role="menu">
                                 <div class="dropdown-content">
-                                    <a href="#" class="dropdown-item">
-                                        Physical
-                                    </a>
-                                    <a href="#" class="dropdown-item">
-                                    Sexual
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Verbal
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Vandalism
-                                </a>
-                                <hr class="dropdown-divider">
-                                <a href="#" class="dropdown-item">
-                                    Other
-                                </a>
+                                    <a href="#" class="dropdown-item">Physical</a>
+                                    <a href="#" class="dropdown-item">Sexual</a>
+                                    <a href="#" class="dropdown-item">Verbal</a>
+                                    <a href="#" class="dropdown-item">Vandalism</a>
+                                    <hr class="dropdown-divider">
+                                    <a href="#" class="dropdown-item">Other</a>
                             </div>
                         </div>
                         </div>    
@@ -110,9 +101,9 @@
                     </header>
                     <section class="modal-card-body">
                         <!-- Dropdown Menu ... -->
-                        <div class="dropdown is-active">
+                        <div class="dropdown">
                             <div class="dropdown-trigger">
-                                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                <button class="button is-size-5" aria-haspopup="true" aria-controls="dropdown-menu">
                                 <span>Select...</span>
                                 <span class="icon is-small">
                                     <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -140,10 +131,19 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
                         <!-- User input: Description of incident (textarea) -->
-                        <div></div>
+                        <div class="field">
+                            <div class="control">
+                                <textarea class="textarea is-warning is-size-5" placeholder="Warning textarea"></textarea>
+                            </div>
+                        </div>
+                        <hr>
                         <!-- User input: Geolocation (button) -->
-                        <div></div>
+                        <div>
+                            <p></p>
+                            <button class="button is-size-5">Geolocation</button>
+                        </div>
                     </section>
                     <footer class="modal-card-foot">
                         <button class="closeModal button is-success">Submit</button>
