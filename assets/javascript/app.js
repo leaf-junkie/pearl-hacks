@@ -3,15 +3,15 @@ var map
 var markers = [
     {
         position: {lat: 35.908265, lng: -79.050531},
-        icon: "googleMapMarkers/blue_MarkerA.png"
+        icon: "../assets/googleMapMarkers/blue_MarkerA.png"
     },
     {
         position: {lat: 35.906392, lng: -79.051134},
-        icon: "googleMapMarkers/blue_MarkerB.png"
+        icon: "../assets/googleMapMarkers/blue_MarkerB.png"
     },
     {
         position: {lat: 35.907294, lng: -79.049519},
-        icon: "googleMapMarkers/red_MarkerC.png"
+        icon: "../assets/googleMapMarkers/red_MarkerC.png"
     }
 ]
 
@@ -23,8 +23,7 @@ function initMap() {
         document.getElementById('map'), {zoom: 14, center: UNC});
 
     
-    markers.forEach(marker => new google.maps.Marker({position: marker.position, map: map, icon: marker.icon})
-    )
+    markers.forEach(marker => new google.maps.Marker({position: marker.position, map: map, icon: marker.icon}));
   }
 
 function addMarker(lat, lng, color, letter){
@@ -41,7 +40,7 @@ function addMarker(lat, lng, color, letter){
         iconLetter = letter
     }
 
-    var icon = "googleMapMarkers/" + color + "_Marker" + iconLetter + ".png"
+    var icon = "../assets/googleMapMarkers/" + color + "_Marker" + iconLetter + ".png"
 
     new google.maps.Marker({position: position, map: map, icon: icon});
 

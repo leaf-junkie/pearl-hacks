@@ -10,11 +10,17 @@
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     </head>
     <body>
+        <!-- LOADING SCREEN -->
+        <div id="loading-screen">
+            <div id="loading"></div>
+            <div id="isItLoaded"></div>
+        </div>
+        <!-- HERO/HEADER -->
         <header>
             <section class="hero is-dark">
                 <div class="hero-body">
-                    <div class="container columns level">
-                        <div class="column">
+                    <div class="hero-container container">
+                        <div>
                             <h1 class="title">
                                 Campus Watch
                             </h1>
@@ -22,16 +28,18 @@
                                 Hate crime and microaggression awareness
                             </p>
                         </div>
-                        <div class="has-text-centered">
+                        <div>
                             <button id="button_post" class="button is-warning is-size-3">Post an Incident</button>
                         </div>
                     </div>
                 </div>
             </section>
         </header>
+        <!-- MAIN CONTENT -->
         <div class="section container">
             <div class="columns level">
                 <div id="resources" class="column is-one-third has-text-centered">
+                    <!-- INFORMATION FOR RESOURCES -->
                     <section class="section">
                         <section>
                             <p class="is-size-3">Resources</p>
@@ -47,6 +55,7 @@
                                 <li class="resource"><a>North Carolina Women's Hospital</a></li>
                                 <li>919-966-4131</li>
                             </ul>
+                            <!-- MODAL -->
                             <div id="modal_resources" class="modal">
                                 <div class="modal-background"></div>
                                 <div class="modal-content">
@@ -57,12 +66,9 @@
                         </section>
                     </section>
                 </div>
-
-                <div id="map" class="column is-two-thirds has-text-centered container">
+                <!-- MAP -->
+                <div class="column is-two-thirds has-text-centered container">
                     <div>
-                        <p>Campus Watch</p>
-                        <!-- <img src="assets/images/mapplaceholder.PNG"> -->
-                        <!--The div element for the map -->
                         <div id="map"></div>
                     </div>
                 </div>

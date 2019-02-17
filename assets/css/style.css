@@ -2,10 +2,18 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#loading-screen {
+    background: 
+}
+
+.hero-container { 
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5%;
+}
+
 #button_post {
-    width: 100%;
     position: relative;
-    right: 2rem;
 }
 
 .resource {
@@ -14,15 +22,29 @@ body {
 }
 
 #map {
-    height: 400px;  /* The height is 400 pixels */
-    width: 100%;  /* The width is the width of the web page */
+    height: 600px;  
+    width: 100%;  
 }
 
 footer {
-    position: relative;
+    position: fixed;
     width: 100%;
-    top: 100%;
     left: 0;
     right: 0;
     bottom: 0;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 1280px) {
+    .container {
+        max-width: inherit;
+        width: inherit;
+    }
+}
+
+@media screen and (min-width: 1088px) {
+    .container {
+        max-width: inherit;
+        width: inherit;
+    }
 }
