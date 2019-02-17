@@ -7,40 +7,44 @@
         <!-- Links -->
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+        <link rel="stylesheet" type="text/css" href="campuswatch.css">
     </head>
     <body>
         <header>
             <section class="hero is-dark">
                 <div class="hero-body">
-                    <div class="container">
-                    <h1 class="title">
-                        Campus Watch
-                    </h1>
-                    <h2 class="subtitle">
-                        Hate crime and microaggression awareness
-                    </h2>
+                    <div class="container columns level">
+                        <div class="column">
+                            <h1 class="title">
+                                Campus Watch
+                            </h1>
+                            <p class="subtitle is-size-4">
+                                Hate crime and microaggression awareness
+                            </p>
+                        </div>
+                        <div class="has-text-centered">
+                            <button id="button_post" class="button is-warning is-size-3">Post an Incident</button>
+                        </div>
                     </div>
                 </div>
             </section>
         </header>
         <div class="section container">
-            <div class="columns">
+            <div class="columns level">
                 <div id="resources" class="column is-one-third has-text-centered">
                     <section class="section">
-                        <button class="button is-warning is-size-3">Post an Incident</button>
-                        <br>
                         <section>
                             <p class="is-size-3">Resources</p>
                             <ul class="is-size-4">
-                                <li><a>Campus Police</a></li>
+                                <li class="resource"><a>Campus Police</a></li>
                                 <li>919-962-8100</li>
-                                <li><a>Counseling and Psychological Services</a></li>
+                                <li class="resource"><a>Counseling and Psychological Services</a></li>
                                 <li>919-966-3658</li>
-                                <li><a>UNC-CH LBGTQ Center</a></li>
+                                <li class="resource"><a>UNC-CH LBGTQ Center</a></li>
                                 <li>919-843-5376</li>
-                                <li><a>UNC Health Care</a></li>
+                                <li class="resource"><a>UNC Health Care</a></li>
                                 <li>984-974-1000</li>
-                                <li><a>North Carolina Women's Hospital</a></li>
+                                <li class="resource"><a>North Carolina Women's Hospital</a></li>
                                 <li>919-966-4131</li>
                             </ul>
                             <div id="modal_resources" class="modal">
@@ -56,7 +60,10 @@
 
                 <div id="map" class="column is-two-thirds has-text-centered container">
                     <div>
-                        <img src="assets/images/mapplaceholder.PNG">
+                        <p>Campus Watch</p>
+                        <!-- <img src="assets/images/mapplaceholder.PNG"> -->
+                        <!--The div element for the map -->
+                        <div id="map"></div>
                     </div>
                 </div>
             </div>
@@ -82,5 +89,14 @@
         <footer class="has-text-centered">
             2019
         </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwOPOkzG6FSCOn9G8Y9JaS667X_RytrW4"></script>
+        <script src="campuswatch.js"></script>
+        <script></script>
+        <!--Load the API from the specified URL
+        * The async attribute allows the browser to render the page while the API loads
+        * The key parameter will contain your own API key (which is not needed for this tutorial)
+        * The callback parameter executes the initMap() function
+        -->
     </body>
 </html>
